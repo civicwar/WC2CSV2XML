@@ -26,7 +26,7 @@ namespace WC2CSV
             foreach (var member in map.MemberMaps.ToArray())
             {
                 string propName = member.Data.Member.Name;
-
+                if (propName.Equals("AmmoRound", StringComparison.OrdinalIgnoreCase)) continue;
                 if (!headers.Contains(propName, StringComparer.OrdinalIgnoreCase)) member.Data.Ignore = true;
             }
 
@@ -67,6 +67,7 @@ namespace WC2CSV
             {
                 string propName = member.Data.Member.Name;
 
+                if (propName.Equals("PartName", StringComparison.OrdinalIgnoreCase)) continue;
                 if (!headers.Contains(propName, StringComparer.OrdinalIgnoreCase)) member.Data.Ignore = true;
             }
 
@@ -78,14 +79,14 @@ namespace WC2CSV
             };
 
             var attrs = new XmlAttributeOverrides();
-            foreach (var p in typeof(CSVAmmo).GetProperties())
+            foreach (var p in typeof(CSVWeapon).GetProperties())
             {
-                if (p.Name == "AmmoRound") attrs.Add(typeof(CSVAmmo), p.Name, new XmlAttributes { XmlAttribute = new XmlAttributeAttribute("AmmoName") });
-                else if (!headers.Contains(p.Name, StringComparer.OrdinalIgnoreCase)) { attrs.Add(typeof(CSVAmmo), p.Name, new XmlAttributes { XmlIgnore = true }); }
+                if (p.Name == "PartName") attrs.Add(typeof(CSVWeapon), p.Name, new XmlAttributes { XmlAttribute = new XmlAttributeAttribute("PartName") });
+                else if (!headers.Contains(p.Name, StringComparer.OrdinalIgnoreCase)) { attrs.Add(typeof(CSVWeapon), p.Name, new XmlAttributes { XmlIgnore = true }); }
             }
 
 
-            var serializer = new XmlSerializer(typeof(AmmoOverrides), attrs);
+            var serializer = new XmlSerializer(typeof(WeaponOverrides), attrs);
             serializer.Serialize(new StreamWriter(output.FullName), overrides);
         }
 
