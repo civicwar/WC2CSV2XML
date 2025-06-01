@@ -1,7 +1,10 @@
-﻿namespace Libs.WyN
+﻿using System.Xml.Serialization;
+
+namespace Libs.WyN
 {
     public class CSVAmmo
     {
+        [XmlAttribute("AmmoName")]
         public string? AmmoRound { get; set; }
         public float? BaseDamage { get; set; }
         public float? AreaEffectDamage { get; set; }

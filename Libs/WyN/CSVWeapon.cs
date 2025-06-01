@@ -1,8 +1,10 @@
-﻿namespace Libs.WyN
+﻿using System.Xml.Serialization;
+
+namespace Libs.WyN
 {
     public class CSVWeapon
     {
-        public string? PartName { get; set; }
+        [XmlAttribute("PartName")] public string? PartName { get; set; }
         public float? MaxTargetDistance { get; set; }
         public float? MinTargetDistance { get; set; }
         public float? RateOfFire { get; set; }

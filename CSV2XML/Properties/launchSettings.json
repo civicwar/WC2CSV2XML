@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "CSV2XML": {
+      "commandName": "Project",
+      "commandLineArgs": "-i \"D:\\Workspace\\SEMods\\WC2CSV2XML\\WC2CSV\\bin\\Debug\\net8.0\\Data\\#AmmoDefinitions.csv\" -o D:\\Workspace\\AmmoWC.xml --ammo --headers BaseDamage AreaEffectDamage AreaEffectRadius DetonationDamage DetonationRadius GravityMultiplier DesiredSpeed MaxTrajectory"
+    }
+  }
+}
